@@ -8,7 +8,7 @@ import 'mousetrap';
     providers : [HotkeysService]
 })
 export class Hotkeys implements OnInit, OnDestroy {
-    @Input('hotkeys') hotkeysInput: Array<{[combo: string]: Function}>;
+    @Input('hotkeys') hotkeysInput: Array<{[combo: string]: (event: KeyboardEvent) => ExtendedKeyboardEvent}>;
 
     mousetrap: MousetrapInstance;
     hotkeys: Hotkey[] = [];
@@ -21,29 +21,22 @@ export class Hotkeys implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        for (let i = 0; i < this.hotkeysInput.length; i++) {
-            let key = Object.keys(this.hotkeysInput[i])[0];
-            let hotkey: Hotkey = new Hotkey(key, this.hotkeysInput[i][key]);
-            let oldHotkey: Hotkey = this._hotkeysService.getHotkey(key);
+        for (let hotkey of this.hotkeysInput) {
+            let combo = Object.keys(hotkey)[0];
+            let hotkeyObj: Hotkey = new Hotkey(combo, hotkey[combo]);
+            let oldHotkey: Hotkey = <Hotkey>this._hotkeysService.get(combo);
             if(oldHotkey !== null){ // We let the user overwrite callbacks temporarily if you specify it in HTML
                 this.oldHotkeys.push(oldHotkey);
-                this._hotkeysService.removeHotkey(oldHotkey);
+                this._hotkeysService.remove(oldHotkey);
             }
-            this.hotkeys.push(hotkey);
-            this.mousetrap.bind(hotkey.combo, hotkey.callback);
+            this.hotkeys.push(hotkeyObj);
+            this.mousetrap.bind(hotkeyObj.combo, hotkeyObj.callback);
         }
-        console.log('now');
-
     }
 
     ngOnDestroy() {
-        for (let i = 0; i < this.hotkeysInput.length; i++) {
-            this.mousetrap.unbind(this.hotkeys[i].combo);
-        }
-        for (let i = 0; i < this.oldHotkeys.length; i++) {
-            this._hotkeysService.addHotkey(this.oldHotkeys[i]); // Add the old hotkeys back after we destroy the current ones
-        }
-
+        this.mousetrap.unbind(this.hotkeys.map(hotkey => hotkey.combo));
+        this._hotkeysService.add(this.oldHotkeys);
     }
 
 }

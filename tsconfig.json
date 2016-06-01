@@ -10,7 +10,7 @@
   },
   "files": [
     "typings/main.d.ts",
-    "angular2-library.ts"
+    "angular2-hotkeys.ts"
   ],
   "exclude": [
     "node_modules"

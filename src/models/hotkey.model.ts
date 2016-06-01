@@ -11,9 +11,11 @@ export class Hotkey {
      * @param {array}    allowIn     an array of tag names to allow this combo in ('INPUT', 'SELECT', and/or 'TEXTAREA')
      * @param {boolean}  persistent  if true, the binding is preserved upon route changes
      */
-    constructor(public combo: string | string[], public callback: Function, public description?: string | Function,
-                public action?: string = 'keydown', public allowIn?: string[] = [], public persistent?: boolean = true) {
-        this.combo = (Array.isArray(combo) ? <string[]>combo : [<string>combo]);
+    constructor(public combo: string, public callback: (event: KeyboardEvent) => ExtendedKeyboardEvent,
+                public description?: string | Function, public action?: string,
+                public allowIn?: string[], public persistent?: boolean)
+    {
+        // this.combo = (Array.isArray(combo) ? <string[]>combo : [<string>combo]);
     }
 
     get formatted(): string[] {
