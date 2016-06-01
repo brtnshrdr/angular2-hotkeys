@@ -38,6 +38,9 @@ For more information on what hotkeys can be used, check out <https://craig.is/ki
 This library is a work in progress and any issues/pull-requests are welcomed!
 Based off of the[angular-hotkeys library](https://github.com/chieffancypants/angular-hotkeys)
 
+## TODO
+1. Automatically generate cheatsheet
+
 ## Development
 
 To generate all `*
