@@ -35,11 +35,13 @@ constructor(private _hotkeysService: HotkeysService) {
 ```
 
 For more information on what hotkeys can be used, check out <https://craig.is/killing/mice>
+
 This library is a work in progress and any issues/pull-requests are welcomed!
-Based off of the[angular-hotkeys library](https://github.com/chieffancypants/angular-hotkeys)
+Based off of the [angular-hotkeys library](https://github.com/chieffancypants/angular-hotkeys)
 
 ## TODO
 1. Automatically generate cheatsheet
+2. Create unit and E2E tests
 
 ## Development
 
