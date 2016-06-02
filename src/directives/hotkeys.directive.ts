@@ -8,7 +8,7 @@ import 'mousetrap';
     providers : [HotkeysService]
 })
 export class Hotkeys implements OnInit, OnDestroy {
-    @Input('hotkeys') hotkeysInput: Array<{[combo: string]: (event: KeyboardEvent) => ExtendedKeyboardEvent}>;
+    @Input('hotkeys') hotkeysInput: Array<{[combo: string]: (event: KeyboardEvent, combo: string) => ExtendedKeyboardEvent}>;
 
     mousetrap: MousetrapInstance;
     hotkeys: Hotkey[] = [];
@@ -35,7 +35,9 @@ export class Hotkeys implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        this.mousetrap.unbind(this.hotkeys.map(hotkey => hotkey.combo));
+        for(let hotkey of this.hotkeys){
+            this.mousetrap.unbind(hotkey.combo);
+        }
         this._hotkeysService.add(this.oldHotkeys);
     }
 

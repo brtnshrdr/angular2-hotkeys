@@ -33,6 +33,13 @@ constructor(private _hotkeysService: HotkeysService) {
     }));
 }
 ```
+It also handles passing an array of hotkey combinations for a single callback
+```typescript
+this._hotkeysService.add(new Hotkey(['meta+shift+g', 'alt+shift+s'], (event: KeyboardEvent, combo: string) => {
+    console.log('Combo: ' + combo); // 'Combo: meta+shift+g' or 'Combo: alt+shift+s'
+    return false; // Prevent bubbling
+}));
+```
 
 For more information on what hotkeys can be used, check out <https://craig.is/killing/mice>
 
