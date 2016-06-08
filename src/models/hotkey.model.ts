@@ -12,10 +12,11 @@ export class Hotkey {
      * @param {boolean}  persistent  if true, the binding is preserved upon route changes
      */
     constructor(public combo: string | string[], public callback: (event: KeyboardEvent, combo: string) => ExtendedKeyboardEvent,
-                public description?: string | Function, public action?: string,
-                public allowIn?: string[], public persistent?: boolean)
-    {
+                public allowIn?: string[], public description?: string | Function, public action?: string,
+                public persistent?: boolean) {
         this.combo = (Array.isArray(combo) ? combo : [<string>combo]);
+        this.allowIn = allowIn || [];
+        description = description || '';
     }
 
     get formatted(): string[] {

@@ -7,6 +7,18 @@ export class HotkeysService {
     hotkeys: Hotkey[] = [];
     pausedHotkeys: Hotkey[] = [];
 
+    private _preventIn = ['INPUT', 'SELECT', 'TEXTAREA'];
+
+    constructor() {
+        Mousetrap.prototype.stopCallback = (event: KeyboardEvent, element: HTMLElement, combo: string, callback: Function) => {
+            // if the element has the class "mousetrap" then no need to stop
+            if((' ' + element.className + ' ').indexOf(' mousetrap ') > -1) {
+                return false;
+            }
+            return (element.contentEditable && element.contentEditable == 'true');
+        };
+    }
+
     add(hotkey: Hotkey | Hotkey[]): Hotkey | Hotkey[] {
         if(Array.isArray(hotkey)) {
             let temp: Hotkey[] = [];
@@ -17,7 +29,28 @@ export class HotkeysService {
         }
         this.remove(hotkey);
         this.hotkeys.push(<Hotkey>hotkey);
-        Mousetrap.bind((<Hotkey>hotkey).combo, (<Hotkey>hotkey).callback);
+        Mousetrap.bind((<Hotkey>hotkey).combo, (event: KeyboardEvent, combo: string) => {
+            let shouldExecute = true;
+
+            // if the callback is executed directly `hotkey.get('w').callback()`
+            // there will be no event, so just execute the callback.
+            if(event) {
+                let target: HTMLElement = <HTMLElement>(event.target || event.srcElement); // srcElement is IE only
+                let nodeName: string = target.nodeName.toUpperCase();
+
+                // check if the input has a mousetrap class, and skip checking preventIn if so
+                if((' ' + target.className + ' ').indexOf(' mousetrap ') > -1) {
+                    shouldExecute = true;
+                } else if(this._preventIn.indexOf(nodeName) > -1 && (<Hotkey>hotkey).allowIn.indexOf(nodeName) === -1) {
+                    // don't execute callback if the event was fired from inside an element listed in preventIn but not in allowIn
+                    shouldExecute = false;
+                }
+            }
+
+            if(shouldExecute) {
+                return (<Hotkey>hotkey).callback.apply(this, [event, combo]);
+            }
+        });
         return hotkey;
     }
 
@@ -80,12 +113,12 @@ export class HotkeysService {
     }
 
     unpause(hotkey?: Hotkey | Hotkey[]): Hotkey | Hotkey[] {
-        if(!hotkey){
+        if(!hotkey) {
             return this.unpause(this.pausedHotkeys);
         }
-        if(Array.isArray(hotkey)){
+        if(Array.isArray(hotkey)) {
             let temp: Hotkey[] = [];
-            for(let key of hotkey){
+            for (let key of hotkey) {
                 temp.push(<Hotkey>this.unpause(key));
             }
             return temp;
