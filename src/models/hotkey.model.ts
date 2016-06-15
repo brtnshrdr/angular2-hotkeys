@@ -1,3 +1,5 @@
+import {ExtendedKeyboardEvent} from 'mousetrap';
+
 export class Hotkey {
     _formatted: string[];
 
