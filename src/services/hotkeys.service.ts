@@ -70,7 +70,7 @@ export class HotkeysService {
         }
         let index = this.findHotkey(<Hotkey>hotkey);
         if(index > -1) {
-            this.hotkeys.slice(index, 1);
+            this.hotkeys.splice(index, 1);
             Mousetrap.unbind((<Hotkey>hotkey).combo);
             return hotkey;
         }
