@@ -8,11 +8,11 @@ import 'mousetrap';
     providers : [HotkeysService]
 })
 export class Hotkeys implements OnInit, OnDestroy {
-    @Input('hotkeys') hotkeysInput: Array<{[combo: string]: (event: KeyboardEvent, combo: string) => ExtendedKeyboardEvent}>;
+    @Input('hotkeys') private hotkeysInput: Array<{[combo: string]: (event: KeyboardEvent, combo: string) => ExtendedKeyboardEvent}>;
 
-    mousetrap: MousetrapInstance;
-    hotkeys: Hotkey[] = [];
-    oldHotkeys: Hotkey[] = [];
+    private mousetrap: MousetrapInstance;
+    private hotkeys: Hotkey[] = [];
+    private oldHotkeys: Hotkey[] = [];
 
     constructor(private _hotkeysService: HotkeysService, private _elementRef: ElementRef) {
         this.mousetrap = new Mousetrap(this._elementRef.nativeElement); // Bind hotkeys to the current element (and any children)

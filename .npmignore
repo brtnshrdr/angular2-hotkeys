@@ -7,6 +7,8 @@ npm-debug.log
 # *.js
 # *.map
 # *.d.ts
+*.ts
+!*.d.ts
 
 # JetBrains
 .idea

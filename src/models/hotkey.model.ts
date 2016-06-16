@@ -1,3 +1,5 @@
+import 'mousetrap';
+
 export class Hotkey {
     _formatted: string[];
 
@@ -11,7 +13,7 @@ export class Hotkey {
      * @param {array}    allowIn     an array of tag names to allow this combo in ('INPUT', 'SELECT', and/or 'TEXTAREA')
      * @param {boolean}  persistent  if true, the binding is preserved upon route changes
      */
-    constructor(public combo: string | string[], public callback: (event: KeyboardEvent, combo: string) => ExtendedKeyboardEvent,
+    constructor(public combo: string | string[], public callback: (event: KeyboardEvent, combo: string) => any,
                 public allowIn?: string[], public description?: string | Function, public action?: string,
                 public persistent?: boolean) {
         this.combo = (Array.isArray(combo) ? combo : [<string>combo]);
