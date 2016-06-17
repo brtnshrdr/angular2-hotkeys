@@ -27,7 +27,7 @@ Then inject the service into your constructor and add a new hotkey
 
 ```typescript
 constructor(private _hotkeysService: HotkeysService) {
-    this._hotkeysService.add(new Hotkey('meta+shift+g', (event: KeyboardEvent) => {
+    this._hotkeysService.add(new Hotkey('meta+shift+g', (event: KeyboardEvent): boolean => {
         console.log('Typed hotkey');
         return false; // Prevent bubbling
     }));
@@ -35,11 +35,15 @@ constructor(private _hotkeysService: HotkeysService) {
 ```
 It also handles passing an array of hotkey combinations for a single callback
 ```typescript
-this._hotkeysService.add(new Hotkey(['meta+shift+g', 'alt+shift+s'], (event: KeyboardEvent, combo: string) => {
+this._hotkeysService.add(new Hotkey(['meta+shift+g', 'alt+shift+s'], (event: KeyboardEvent, combo: string): ExtendedKeyboardEvent => {
     console.log('Combo: ' + combo); // 'Combo: meta+shift+g' or 'Combo: alt+shift+s'
-    return false; // Prevent bubbling
+    let e: ExtendedKeyboardEvent = event;
+    e.returnValue = false; // Prevent bubbling
+    return e;
 }));
 ```
+
+Your callback must return either a boolean or an "ExtendedKeyboardEvent".
 
 For more information on what hotkeys can be used, check out <https://craig.is/killing/mice>
 
