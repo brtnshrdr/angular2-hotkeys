@@ -6,6 +6,7 @@ import 'mousetrap';
 export class HotkeysService {
     hotkeys: Hotkey[] = [];
     pausedHotkeys: Hotkey[] = [];
+    mousetrap: MousetrapInstance;
 
     private _preventIn = ['INPUT', 'SELECT', 'TEXTAREA'];
 
@@ -17,6 +18,7 @@ export class HotkeysService {
             }
             return (element.contentEditable && element.contentEditable == 'true');
         };
+        this.mousetrap = new (<any>Mousetrap)();
     }
 
     add(hotkey: Hotkey | Hotkey[]): Hotkey | Hotkey[] {
@@ -29,7 +31,7 @@ export class HotkeysService {
         }
         this.remove(hotkey);
         this.hotkeys.push(<Hotkey>hotkey);
-        Mousetrap.bind((<Hotkey>hotkey).combo, (event: KeyboardEvent, combo: string) => {
+        this.mousetrap.bind((<Hotkey>hotkey).combo, (event: KeyboardEvent, combo: string) => {
             let shouldExecute = true;
 
             // if the callback is executed directly `hotkey.get('w').callback()`
@@ -71,7 +73,7 @@ export class HotkeysService {
         let index = this.findHotkey(<Hotkey>hotkey);
         if(index > -1) {
             this.hotkeys.splice(index, 1);
-            Mousetrap.unbind((<Hotkey>hotkey).combo);
+            this.mousetrap.unbind((<Hotkey>hotkey).combo);
             return hotkey;
         }
         return null;
@@ -131,7 +133,7 @@ export class HotkeysService {
     }
 
     reset() {
-        Mousetrap.reset();
+        this.mousetrap.reset();
     }
 
     private findHotkey(hotkey: Hotkey): number {

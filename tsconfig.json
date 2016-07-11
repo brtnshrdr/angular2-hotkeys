@@ -9,7 +9,7 @@
     "declaration": true
   },
   "files": [
-    "typings/main.d.ts",
+    "typings/index.d.ts",
     "angular2-hotkeys.ts"
   ],
   "exclude": [
