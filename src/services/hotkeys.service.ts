@@ -128,8 +128,9 @@ export class HotkeysService {
         let index: number = this.pausedHotkeys.indexOf(<Hotkey>hotkey);
         if(index > -1) {
             this.add(hotkey);
-            this.pausedHotkeys.splice(index, 1);
+            return this.pausedHotkeys.splice(index, 1);
         }
+        return null;
     }
 
     reset() {
