@@ -16,8 +16,6 @@ export class Hotkeys implements OnInit, OnDestroy {
 
     constructor(private _hotkeysService: HotkeysService, private _elementRef: ElementRef) {
         this.mousetrap = new Mousetrap(this._elementRef.nativeElement); // Bind hotkeys to the current element (and any children)
-        console.log('Created hotkey instance');
-        console.dir(this.mousetrap);
     }
 
     ngOnInit() {
