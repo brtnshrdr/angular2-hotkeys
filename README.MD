@@ -1,5 +1,5 @@
 # angular2-hotkeys
-
+Angular RC.6 Compatible
 ## Installation
 
 To install this library, run:
@@ -9,20 +9,29 @@ $ npm install angular2-hotkeys --save
 ```
 
 ## Examples
-First, import the HotkeysService and Hotkey model
+First, import the HotkeyModule into your root AppModule
 
 ```typescript
-import {HotkeysService, Hotkey} from 'angular2-hotkeys';
+import {HotkeyModule} from 'angular2-hotkeys';
 ```
 
-Then, add HotkeysService to your components providers array
+Then, add HotkeyModule.forRoot() to your AppModule's import array
 
 ```typescript
-@Component({
-    selector : 'example',
-    providers : [HotkeysService],
+@NgModule({
+    imports : [CommonModule, HotkeyModule.forRoot(), ...],
 })
+export class AppModule {}
 ```
+
+If you have any sub/feature modules that also use hotkeys, import the HotkeyModule (but NOT .forRoot())
+```typescript
+@NgModule({
+    imports : [CommonModule, HotkeyModule, ...],
+})
+export class SharedModule {}
+```
+
 Then inject the service into your constructor and add a new hotkey
 
 ```typescript
