@@ -8,6 +8,10 @@ export * from './src/directives/hotkeys.directive';
 export * from './src/services/hotkeys.service';
 export * from './src/models/hotkey.model';
 
+export interface ExtendedKeyboardEvent extends KeyboardEvent {
+    returnValue: boolean; // IE returnValue
+}
+
 @NgModule({
     imports : [CommonModule],
     exports : [Hotkeys],
