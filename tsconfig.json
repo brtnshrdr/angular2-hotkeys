@@ -8,8 +8,13 @@
     "sourceMap": true,
     "declaration": true
   },
+  "angularCompilerOptions": {
+    "genDir": "compiled"
+  },
+  "typeRoots": [
+    "../node_modules/@types"
+  ],
   "files": [
-    "typings/index.d.ts",
     "angular2-hotkeys.ts"
   ],
   "exclude": [

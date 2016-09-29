@@ -2,6 +2,9 @@
 node_modules/*
 npm-debug.log
 
+# Angular
+/compiled
+
 # DO NOT IGNORE TYPESCRIPT FILES FOR NPM
 # TypeScript
 # *.js

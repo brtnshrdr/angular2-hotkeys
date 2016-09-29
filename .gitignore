@@ -1,3 +1,7 @@
+# Angular
+/compiled
+*.metadata.json
+
 # Node
 node_modules/*
 npm-debug.log
