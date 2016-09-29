@@ -91,7 +91,7 @@ export class HotkeysService {
             return temp;
         }
         for (let i = 0; i < this.hotkeys.length; i++) {
-            if(this.hotkeys[i].combo.indexOf(combo) > -1) {
+            if(this.hotkeys[i].combo.indexOf(<string>combo) > -1) {
                 return this.hotkeys[i];
             }
         }
