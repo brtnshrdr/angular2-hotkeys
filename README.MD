@@ -1,5 +1,5 @@
 # angular2-hotkeys
-Angular RC.6 Compatible
+Angular 2.2.x Compatible
 ## Installation
 
 To install this library, run:
