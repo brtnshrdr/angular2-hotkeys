@@ -59,9 +59,41 @@ For more information on what hotkeys can be used, check out <https://craig.is/ki
 This library is a work in progress and any issues/pull-requests are welcomed!
 Based off of the [angular-hotkeys library](https://github.com/chieffancypants/angular-hotkeys)
 
+## Cheat Sheet
+
+To enable the cheat sheet, simply add `<hotkeys-cheatsheet></hotkeys-cheatsheet>` to your top level component template.
+The `HotkeysService` will automatically register the `?` key combo to toggle the cheat sheet.
+
+### Cheat Sheet Customization
+
+1. You can now pass in custom options in `HotkeysModule.forRoot(options: IHotkeyOptions)`.
+
+```typescript
+export interface IHotkeyOptions {
+  /**
+   * Disable the cheat sheet popover dialog? Default: false
+   */
+  disableCheatSheet?: boolean;
+  /**
+   * Key combination to trigger the cheat sheet. Default: '?'
+   */
+  cheatSheetHotkey?: string;
+  /**
+   * Description for the cheat sheet hot key in the cheat sheet. Default: 'Show / hide this help menu'
+   */
+  cheatSheetDescription?: string;
+};
+```
+
+2. You can also customize the title of the cheat sheet component.
+
+```html
+<hotkeys-cheatsheet title="Hotkeys Rock!"></hotkeys-cheatsheet>
+<!-- Default: 'Keyboard Shortcuts:' -->
+```
+
 ## TODO
-1. Automatically generate cheatsheet
-2. Create unit and E2E tests
+1. Create unit and E2E tests
 
 ## Development
 

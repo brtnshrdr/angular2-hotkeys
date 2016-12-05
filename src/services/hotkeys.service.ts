@@ -1,4 +1,6 @@
-import {Injectable} from '@angular/core';
+import { HotkeyOptions, IHotkeyOptions } from './../models/hotkey.options';
+import { Subject } from 'rxjs/Subject';
+import { Inject, Injectable } from '@angular/core';
 import {Hotkey} from '../models/hotkey.model';
 import 'mousetrap';
 
@@ -7,10 +9,11 @@ export class HotkeysService {
     hotkeys: Hotkey[] = [];
     pausedHotkeys: Hotkey[] = [];
     mousetrap: MousetrapInstance;
+    cheatSheetToggle: Subject<any> = new Subject();
 
     private _preventIn = ['INPUT', 'SELECT', 'TEXTAREA'];
 
-    constructor() {
+    constructor(@Inject(HotkeyOptions) private options: IHotkeyOptions) {
         Mousetrap.prototype.stopCallback = (event: KeyboardEvent, element: HTMLElement, combo: string, callback: Function) => {
             // if the element has the class "mousetrap" then no need to stop
             if((' ' + element.className + ' ').indexOf(' mousetrap ') > -1) {
@@ -19,6 +22,16 @@ export class HotkeysService {
             return (element.contentEditable && element.contentEditable == 'true');
         };
         this.mousetrap = new (<any>Mousetrap)();
+        if (!this.options.disableCheatSheet) {
+            this.add(new Hotkey(
+                this.options.cheatSheetHotkey || '?',
+                function(event: KeyboardEvent) {
+                    this.cheatSheetToggle.next({});
+                }.bind(this),
+                [],
+                this.options.cheatSheetDescription || 'Show / hide this help menu',
+            ))
+        }
     }
 
     add(hotkey: Hotkey | Hotkey[]): Hotkey | Hotkey[] {
