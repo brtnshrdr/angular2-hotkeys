@@ -6,8 +6,7 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "sourceMap": true,
-    "declaration": true,
-    "outDir": "./dist"
+    "declaration": true
   },
   "angularCompilerOptions": {
     "genDir": "compiled"
@@ -19,7 +18,6 @@
     "index.ts"
   ],
   "exclude": [
-    "node_modules",
-    "dist"
+    "node_modules"
   ]
 }

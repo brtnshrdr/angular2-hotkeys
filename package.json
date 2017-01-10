@@ -1,12 +1,12 @@
 {
   "name": "angular2-hotkeys",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "scripts": {
     "lint": "tslint src/**/*.ts",
     "test": "tsc && karma start",
     "prepublish": "tsc",
     "tsc": "tsc",
-    "ngc": "ngc"
+    "ngc": "./node_modules/.bin/ngc -p tsconfig.json"
   },
   "repository": {
     "type": "git",
