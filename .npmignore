@@ -5,11 +5,10 @@ npm-debug.log
 # Angular
 /compiled
 
-# DO NOT IGNORE TYPESCRIPT FILES FOR NPM
+# DO NOT IGNORE COMPILED FILES FOR NPM
 # TypeScript
-# *.js
-# *.map
-# *.d.ts
+*.ts
+!*.d.ts
 
 # JetBrains
 .idea
