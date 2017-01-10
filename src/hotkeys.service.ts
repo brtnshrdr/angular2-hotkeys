@@ -1,7 +1,7 @@
-import { HotkeyOptions, IHotkeyOptions } from './../models/hotkey.options';
-import { Subject } from 'rxjs/Subject';
-import { Inject, Injectable } from '@angular/core';
-import {Hotkey} from '../models/hotkey.model';
+import {HotkeyOptions, IHotkeyOptions} from './hotkey.options';
+import {Subject} from 'rxjs/Subject';
+import {Inject, Injectable} from '@angular/core';
+import {Hotkey} from './hotkey.model';
 import 'mousetrap';
 
 @Injectable()
@@ -19,18 +19,18 @@ export class HotkeysService {
             if((' ' + element.className + ' ').indexOf(' mousetrap ') > -1) {
                 return false;
             }
-            return (element.contentEditable && element.contentEditable == 'true');
+            return (element.contentEditable && element.contentEditable === 'true');
         };
         this.mousetrap = new (<any>Mousetrap)();
-        if (!this.options.disableCheatSheet) {
+        if(!this.options.disableCheatSheet) {
             this.add(new Hotkey(
-                this.options.cheatSheetHotkey || '?',
-                function(event: KeyboardEvent) {
-                    this.cheatSheetToggle.next({});
-                }.bind(this),
-                [],
-                this.options.cheatSheetDescription || 'Show / hide this help menu',
-            ))
+                    this.options.cheatSheetHotkey || '?',
+                    function (event: KeyboardEvent) {
+                        this.cheatSheetToggle.next({});
+                    }.bind(this),
+                    [],
+                    this.options.cheatSheetDescription || 'Show / hide this help menu',
+            ));
         }
     }
 

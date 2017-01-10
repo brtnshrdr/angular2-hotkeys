@@ -6,18 +6,20 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "sourceMap": true,
-    "declaration": true
+    "declaration": true,
+    "outDir": "./dist"
   },
   "angularCompilerOptions": {
     "genDir": "compiled"
   },
   "typeRoots": [
-    "../node_modules/@types"
+    "node_modules/@types"
   ],
   "files": [
-    "angular2-hotkeys.ts"
+    "index.ts"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "dist"
   ]
 }
