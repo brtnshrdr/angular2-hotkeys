@@ -1,6 +1,6 @@
 {
   "name": "angular2-hotkeys",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "scripts": {
     "lint": "tslint src/**/*.ts",
     "test": "tsc && karma start",
