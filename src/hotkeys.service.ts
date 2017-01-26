@@ -34,11 +34,11 @@ export class HotkeysService {
         }
     }
 
-    add(hotkey: Hotkey | Hotkey[]): Hotkey | Hotkey[] {
+    add(hotkey: Hotkey | Hotkey[], specificEvent?: string): Hotkey | Hotkey[] {
         if(Array.isArray(hotkey)) {
             let temp: Hotkey[] = [];
             for (let key of hotkey) {
-                temp.push(<Hotkey>this.add(key));
+                temp.push(<Hotkey>this.add(key, specificEvent));
             }
             return temp;
         }
@@ -65,7 +65,7 @@ export class HotkeysService {
             if(shouldExecute) {
                 return (<Hotkey>hotkey).callback.apply(this, [event, combo]);
             }
-        });
+        }, specificEvent);
         return hotkey;
     }
 
