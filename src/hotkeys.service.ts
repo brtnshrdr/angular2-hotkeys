@@ -56,7 +56,7 @@ export class HotkeysService {
                 // check if the input has a mousetrap class, and skip checking preventIn if so
                 if((' ' + target.className + ' ').indexOf(' mousetrap ') > -1) {
                     shouldExecute = true;
-                } else if(this._preventIn.indexOf(nodeName) > -1 && (<Hotkey>hotkey).allowIn.indexOf(nodeName) === -1) {
+                } else if(this._preventIn.indexOf(nodeName) > -1 && (<Hotkey>hotkey).allowIn.map(allow => allow.toUpperCase()).indexOf(nodeName) === -1) {
                     // don't execute callback if the event was fired from inside an element listed in preventIn but not in allowIn
                     shouldExecute = false;
                 }
