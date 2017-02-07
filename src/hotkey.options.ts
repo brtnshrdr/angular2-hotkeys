@@ -1,4 +1,4 @@
-import {OpaqueToken} from '@angular/core';
+import {InjectionToken} from '@angular/core';
 
 export interface IHotkeyOptions {
     /**
@@ -14,5 +14,5 @@ export interface IHotkeyOptions {
      */
     cheatSheetDescription?: string;
 }
-;
-export const HotkeyOptions = new OpaqueToken('HotkeyOptions');
+
+export const HotkeyOptions = new InjectionToken<IHotkeyOptions>('HotkeyOptions');

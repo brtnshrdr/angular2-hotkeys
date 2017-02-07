@@ -1,6 +1,6 @@
 {
   "name": "angular2-hotkeys",
-  "version": "1.0.3",
+  "version": "2.0.0",
   "scripts": {
     "lint": "tslint src/**/*.ts",
     "test": "tsc && karma start",
@@ -33,20 +33,16 @@
     "mousetrap": "^1.6.0"
   },
   "devDependencies": {
-    "@angular/core": "^2.4.6",
-    "@angular/common": "^2.4.6",
-    "@angular/compiler": "^2.4.6",
-    "@angular/compiler-cli": "^2.4.6",
-    "@angular/platform-server": "^2.4.6",
+    "@angular/common": "4.0.0-beta.6",
+    "@angular/compiler": "4.0.0-beta.6",
+    "@angular/compiler-cli": "4.0.0-beta.6",
+    "@angular/core": "4.0.0-beta.6",
+    "@types/core-js": "^0.9.35",
     "codelyzer": "^0.0.28",
     "rxjs": "^5.0.1",
     "tslint": "^3.15.1",
-    "typescript": "2.0.2",
-    "zone.js": "0.7.2",
-    "@types/es6-shim": "^0.31.32",
-    "@types/protractor": "^4.0.0",
-    "@types/jasmine": "^2.5.40",
-    "@types/selenium-webdriver": "^2.53.39"
+    "typescript": "2.1.5",
+    "zone.js": "0.7.2"
   },
   "engines": {
     "node": ">=0.8.0"
