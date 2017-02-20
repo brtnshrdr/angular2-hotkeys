@@ -1,6 +1,6 @@
 {
   "name": "angular2-hotkeys",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "scripts": {
     "lint": "tslint src/**/*.ts",
     "test": "tsc && karma start",
@@ -27,7 +27,7 @@
   "bugs": {
     "url": "git@github.com:brtnshrdr/angular2-hotkeys.git/issues"
   },
-  "main": "./dist/index.js",
+  "main": "./index.js",
   "dependencies": {
     "@types/mousetrap": "^1.5.32",
     "mousetrap": "^1.6.0"
