@@ -26,12 +26,24 @@ export class HotkeysService {
             this.add(new Hotkey(
                     this.options.cheatSheetHotkey || '?',
                     function (event: KeyboardEvent) {
-                        this.cheatSheetToggle.next({});
+                        this.cheatSheetToggle.next();
                     }.bind(this),
                     [],
                     this.options.cheatSheetDescription || 'Show / hide this help menu',
             ));
         }
+
+        if(this.options.cheatSheetCloseEsc) {
+            this.add(new Hotkey(
+                'esc',
+                function (event: KeyboardEvent) {
+                    this.cheatSheetToggle.next(false);
+                }.bind(this),
+                ['HOTKEYS-CHEATSHEET'],
+                'Hide this help menu',
+            ));
+        }
+
     }
 
     add(hotkey: Hotkey | Hotkey[], specificEvent?: string): Hotkey | Hotkey[] {

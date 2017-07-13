@@ -6,7 +6,11 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "sourceMap": true,
-    "declaration": true
+    "declaration": true,
+    "lib": [
+      "es2016",
+      "dom"
+    ]
   },
   "angularCompilerOptions": {
     "genDir": "compiled"

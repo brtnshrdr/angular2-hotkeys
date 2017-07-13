@@ -9,6 +9,11 @@ export interface IHotkeyOptions {
      * Key combination to trigger the cheat sheet. Default: '?'
      */
     cheatSheetHotkey?: string;
+
+    /**
+     * Use also ESC for closing the cheat sheet. Default: false
+     */
+    cheatSheetCloseEsc?: boolean;
     /**
      * Description for the cheat sheet hot key in the cheat sheet. Default: 'Show / hide this help menu'
      */

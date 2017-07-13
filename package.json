@@ -33,16 +33,16 @@
     "mousetrap": "^1.6.0"
   },
   "devDependencies": {
-    "@angular/common": "4.0.0-beta.6",
-    "@angular/compiler": "4.0.0-beta.6",
-    "@angular/compiler-cli": "4.0.0-beta.6",
-    "@angular/core": "4.0.0-beta.6",
-    "@types/core-js": "^0.9.35",
-    "codelyzer": "^0.0.28",
-    "rxjs": "^5.0.1",
+    "@angular/common": "4.2.5",
+    "@angular/compiler": "4.2.5",
+    "@angular/compiler-cli": "4.2.5",
+    "@angular/core": "4.2.5",
+    "@types/core-js": "0.9.41",
+    "codelyzer": "~3.0.1",
+    "rxjs": "^5.4.0",
     "tslint": "^3.15.1",
-    "typescript": "2.1.5",
-    "zone.js": "0.7.2"
+    "typescript": "~2.3.3",
+    "zone.js": "^0.8.4"
   },
   "engines": {
     "node": ">=0.8.0"
