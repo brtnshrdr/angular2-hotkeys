@@ -134,9 +134,16 @@ export class CheatSheetComponent implements OnInit, OnDestroy {
     }
 
     public ngOnInit(): void {
-        this.subscription = this.hotkeysService.cheatSheetToggle.subscribe(() => {
-            this.hotkeys = this.hotkeysService.hotkeys.filter(hotkey => hotkey.description);
-            this.toggleCheatSheet();
+        this.subscription = this.hotkeysService.cheatSheetToggle.subscribe((isOpen) => {
+            if(isOpen !== false) {
+                this.hotkeys = this.hotkeysService.hotkeys.filter(hotkey => hotkey.description);
+            }
+
+            if(isOpen === false) {
+                this.helpVisible = false;
+            } else {
+                this.toggleCheatSheet();
+            }
         });
     }
 
