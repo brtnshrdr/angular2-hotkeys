@@ -69,10 +69,10 @@ The `HotkeysService` will automatically register the `?` key combo to toggle the
 an optional fourth parameter as a string or optionally as a function for dynamic descriptions.
 
 ```typescript
-    this._hotkeysService.add(new Hotkey('meta+shift+g', (event: KeyboardEvent): boolean => {
-        console.log('Secret message');
-        return false;
-    }, undefined, 'Send a secret message to the console.'));
+this._hotkeysService.add(new Hotkey('meta+shift+g', (event: KeyboardEvent): boolean => {
+    console.log('Secret message');
+    return false;
+}, undefined, 'Send a secret message to the console.'));
 ```
 
 The third parameter, given as `undefined`, can be used to allow the Hotkey to fire in INPUT, SELECT or TEXTAREA tags.
@@ -96,8 +96,8 @@ export interface IHotkeyOptions {
    */
   cheatSheetCloseEsc?: boolean;
   /**
-    * Description for the ESC key for closing the cheat sheet (if enabed). Default: 'Hide this help menu'
-    */
+   * Description for the ESC key for closing the cheat sheet (if enabed). Default: 'Hide this help menu'
+   */
   cheatSheetCloseEscDescription?: string;
   /**
    * Description for the cheat sheet hot key in the cheat sheet. Default: 'Show / hide this help menu'
