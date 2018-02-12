@@ -84,6 +84,10 @@ export interface IHotkeyOptions {
    */
   cheatSheetCloseEsc?: boolean;
   /**
+    * Description for the ESC key for closing the cheat sheet (if enabed). Default: 'Hide this help menu'
+    */
+  cheatSheetCloseEscDescription?: string;
+  /**
    * Description for the cheat sheet hot key in the cheat sheet. Default: 'Show / hide this help menu'
    */
   cheatSheetDescription?: string;
