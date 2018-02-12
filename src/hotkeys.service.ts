@@ -40,7 +40,7 @@ export class HotkeysService {
                     this.cheatSheetToggle.next(false);
                 }.bind(this),
                 ['HOTKEYS-CHEATSHEET'],
-                'Hide this help menu',
+                this.options.cheatSheetCloseEscDescription || 'Hide this help menu',
             ));
         }
 
