@@ -65,6 +65,18 @@ Based off of the [angular-hotkeys library](https://github.com/chieffancypants/an
 To enable the cheat sheet, simply add `<hotkeys-cheatsheet></hotkeys-cheatsheet>` to your top level component template.
 The `HotkeysService` will automatically register the `?` key combo to toggle the cheat sheet.
 
+**NB!** Only hotkeys that have a description will apear on the cheat sheet. The Hotkey constructor takes a description as
+an optional fourth parameter as a string or optionally as a function for dynamic descriptions.
+
+```typescript
+this._hotkeysService.add(new Hotkey('meta+shift+g', (event: KeyboardEvent): boolean => {
+    console.log('Secret message');
+    return false;
+}, undefined, 'Send a secret message to the console.'));
+```
+
+The third parameter, given as `undefined`, can be used to allow the Hotkey to fire in INPUT, SELECT or TEXTAREA tags.
+
 ### Cheat Sheet Customization
 
 1. You can now pass in custom options in `HotkeysModule.forRoot(options: IHotkeyOptions)`.
@@ -83,6 +95,10 @@ export interface IHotkeyOptions {
    * Use also ESC for closing the cheat sheet. Default: false
    */
   cheatSheetCloseEsc?: boolean;
+  /**
+   * Description for the ESC key for closing the cheat sheet (if enabed). Default: 'Hide this help menu'
+   */
+  cheatSheetCloseEscDescription?: string;
   /**
    * Description for the cheat sheet hot key in the cheat sheet. Default: 'Show / hide this help menu'
    */
