@@ -45,6 +45,10 @@
     "typescript": "~2.3.3",
     "zone.js": "^0.8.4"
   },
+  "peerDependencies": {
+    "@angular/core": "^5.2.0 || ^6.0.0",
+    "rxjs": "^5.5.0"
+  },
   "engines": {
     "node": ">=0.8.0"
   }
