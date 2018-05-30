@@ -30,7 +30,6 @@
   },
   "main": "./index.js",
   "dependencies": {
-    "@types/mousetrap": "^1.5.32",
     "mousetrap": "^1.6.0"
   },
   "devDependencies": {
@@ -39,6 +38,7 @@
     "@angular/compiler-cli": "4.2.5",
     "@angular/core": "4.2.5",
     "@types/core-js": "0.9.41",
+    "@types/mousetrap": "^1.6.0",
     "codelyzer": "~3.0.1",
     "rxjs": "^5.5.0",
     "tslint": "^3.15.1",
