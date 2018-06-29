@@ -7,8 +7,8 @@ import {Hotkey} from './hotkey.model';
     selector : 'hotkeys-cheatsheet',
     styles : [`
 .cfp-hotkeys-container {
-  display: table !important;
-  position: fixed;
+  display: block;
+  position: absolute;
   width: 100%;
   height: 100%;
   top: 0;
@@ -43,8 +43,14 @@ import {Hotkey} from './hotkey.model';
 .cfp-hotkeys {
   width: 100%;
   height: 100%;
-  display: table-cell;
+  display: block;
   vertical-align: middle;
+}
+
+.cfp-hotkeys-table{
+  display: block;
+  height: calc(100% - 40px);
+  overflow-y: auto;
 }
 
 .cfp-hotkeys table {
@@ -53,7 +59,7 @@ import {Hotkey} from './hotkey.model';
 }
 
 .cfp-content {
-  display: table-cell;
+  display: block;
   vertical-align: middle;
 }
 
@@ -110,18 +116,25 @@ import {Hotkey} from './hotkey.model';
     font-size: 1.2em;
   }
 }  `],
-    template : `<div class="cfp-hotkeys-container fade" [ngClass]="{'in': helpVisible}" style="display:none"><div class="cfp-hotkeys">
-  <h4 class="cfp-hotkeys-title">{{ title }}</h4>
-  <table><tbody>
-    <tr *ngFor="let hotkey of hotkeys">
-      <td class="cfp-hotkeys-keys">
-        <span *ngFor="let key of hotkey.formatted" class="cfp-hotkeys-key">{{ key }}</span>
-      </td>
-      <td class="cfp-hotkeys-text">{{ hotkey.description }}</td>
-    </tr>
-  </tbody></table>
-  <div class="cfp-hotkeys-close" (click)="toggleCheatSheet()">&#215;</div>
-</div></div>`,
+    template : `
+    <div class="cfp-hotkeys-container fade" [ngClass]="{'in': helpVisible}">
+      <div class="cfp-hotkeys">
+        <h4 class="cfp-hotkeys-title">{{ title }}</h4>
+        <div class="cfp-hotkeys-table">
+          <table>
+            <tbody>
+              <tr *ngFor="let hotkey of hotkeys">
+                <td class="cfp-hotkeys-keys">
+                  <span *ngFor="let key of hotkey.formatted" class="cfp-hotkeys-key">{{ key }}</span>
+                </td>
+                <td class="cfp-hotkeys-text">{{ hotkey.description }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="cfp-hotkeys-close" (click)="toggleCheatSheet()">&#215;</div>
+      </div>
+    </div>`,
 })
 export class CheatSheetComponent implements OnInit, OnDestroy {
     helpVisible = false;
