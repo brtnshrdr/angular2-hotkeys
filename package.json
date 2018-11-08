@@ -46,7 +46,7 @@
     "zone.js": "^0.8.4"
   },
   "peerDependencies": {
-    "@angular/core": "^5.2.0 || ^6.0.0",
+    "@angular/core": "^5.2.0 || ^6.0.0 || ^7.0.0",
     "rxjs": "^5.5.0 || ^6.0.0"
   },
   "engines": {
