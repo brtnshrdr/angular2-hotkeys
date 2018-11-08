@@ -4,7 +4,7 @@
   "scripts": {
     "lint": "tslint src/**/*.ts",
     "test": "tsc && karma start",
-    "prepublish": "tsc && ngc",
+    "prepare": "tsc && ngc",
     "tsc": "tsc",
     "tsc:watch": "tsc --watch",
     "ngc": "./node_modules/.bin/ngc -p tsconfig.json"
