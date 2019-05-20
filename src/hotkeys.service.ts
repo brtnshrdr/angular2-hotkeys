@@ -163,11 +163,7 @@ export class HotkeysService {
     }
 
     toggleCheatSheet() {
-        if (this.isCheatSheetOpen) {
-            this.isCheatSheetOpen = false;
-        } else {
-            this.isCheatSheetOpen = true;
-        }
+        this.isCheatSheetOpen = !this.isCheatSheetOpen;
         this.cheatSheetToggle.next(this.isCheatSheetOpen);
     }
 
