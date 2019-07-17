@@ -1,5 +1,5 @@
 # angular2-hotkeys
-Angular 5.2.0+, 6 and 7 Compatible. Older versions might work but isn't officially tested.
+Angular 5.2.0+, 6, 7 and 8 Compatible. Older versions might work but isn't officially tested. Also library is Angular IVY ready.
 ## Installation
 
 To install this library, run:
