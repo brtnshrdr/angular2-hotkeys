@@ -1,13 +1,13 @@
 {
   "name": "angular2-hotkeys",
-  "version": "2.1.4",
+  "version": "2.1.5",
   "scripts": {
     "lint": "tslint src/**/*.ts",
     "test": "tsc && karma start",
     "prepare": "tsc && ngc",
     "tsc": "tsc",
     "tsc:watch": "tsc --watch",
-    "ngc": "ngc -p tsconfig.json"
+    "ngc": "./node_modules/.bin/ngc -p tsconfig.json"
   },
   "repository": {
     "type": "git",
@@ -28,23 +28,21 @@
   "bugs": {
     "url": "git@github.com:brtnshrdr/angular2-hotkeys.git/issues"
   },
-  "module": "./angular2-hotkeys.js",
-  "typings":"./angular2-hotkeys.d.ts",
+  "main": "./index.js",
   "dependencies": {
     "mousetrap": "^1.6.0",
     "@types/mousetrap": "^1.6.0"
   },
   "devDependencies": {
-    "@angular/common": "8.0.0",
-    "@angular/compiler": "8.0.0",
-    "@angular/compiler-cli": "8.0.0",
-    "@angular/core": "8.0.0",
-    "tsickle": "0.35.0",
+    "@angular/common": "8.2.4",
+    "@angular/compiler": "8.2.4",
+    "@angular/compiler-cli": "8.2.4",
+    "@angular/core": "8.2.4",
     "@types/core-js": "0.9.41",
-    "codelyzer": "~3.0.1",
-    "rxjs": "^6.5.0",
-    "tslint": "^3.15.1",
-    "typescript": "~3.4.5",
+    "codelyzer": "^5.0.0",
+    "rxjs": "^6.5.2",
+    "tslint": "^5.0.0",
+    "typescript": "~3.5.3",
     "zone.js": "^0.9.1"
   },
   "peerDependencies": {

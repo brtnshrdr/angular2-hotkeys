@@ -1,9 +1,8 @@
 {
   "compilerOptions": {
     "noImplicitAny": true,
-    "module": "esnext",
-    "target": "es5",
-    "moduleResolution": "node",
+    "module": "commonjs",
+    "target": "ES5",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "sourceMap": true,
@@ -14,18 +13,13 @@
     ]
   },
   "angularCompilerOptions": {
-    "enableResourceInlining": true,
-    "annotateForClosureCompiler": true,
-    "strictMetadataEmit": false,
-    "skipTemplateCodegen": true,
-    "flatModuleOutFile": "angular2-hotkeys.js",
-    "flatModuleId": "angular2-hotkeys"
+    "genDir": "compiled"
   },
   "typeRoots": [
     "node_modules/@types"
   ],
   "files": [
-    "public_api.ts"
+    "index.ts"
   ],
   "exclude": [
     "node_modules"
