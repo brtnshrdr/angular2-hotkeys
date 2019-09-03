@@ -1,6 +1,8 @@
 # Angular
 /compiled
 *.metadata.json
+*.ngsummary.json
+package-lock.json
 
 # Node
 node_modules/*
