@@ -10,6 +10,7 @@ export class HotkeysService {
     pausedHotkeys: Hotkey[] = [];
     mousetrap: MousetrapInstance;
     cheatSheetToggle: Subject<any> = new Subject();
+    isCheatSheetOpen: boolean = false;
 
     private _preventIn = ['INPUT', 'SELECT', 'TEXTAREA'];
 
@@ -26,7 +27,7 @@ export class HotkeysService {
             this.add(new Hotkey(
                     this.options.cheatSheetHotkey || '?',
                     function (event: KeyboardEvent) {
-                        this.cheatSheetToggle.next();
+                        this.toggleCheatSheet();
                     }.bind(this),
                     [],
                     this.options.cheatSheetDescription || 'Show / hide this help menu',
@@ -37,7 +38,7 @@ export class HotkeysService {
             this.add(new Hotkey(
                 'esc',
                 function (event: KeyboardEvent) {
-                    this.cheatSheetToggle.next(false);
+                    this.toggleCheatSheet()
                 }.bind(this),
                 ['HOTKEYS-CHEATSHEET'],
                 this.options.cheatSheetCloseEscDescription || 'Hide this help menu',
@@ -160,6 +161,11 @@ export class HotkeysService {
 
     reset() {
         this.mousetrap.reset();
+    }
+
+    toggleCheatSheet() {
+        this.isCheatSheetOpen = !this.isCheatSheetOpen;
+        this.cheatSheetToggle.next(this.isCheatSheetOpen);
     }
 
     private findHotkey(hotkey: Hotkey): number {

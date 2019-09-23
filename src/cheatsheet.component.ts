@@ -138,12 +138,7 @@ export class CheatSheetComponent implements OnInit, OnDestroy {
             if(isOpen !== false) {
                 this.hotkeys = this.hotkeysService.hotkeys.filter(hotkey => hotkey.description);
             }
-
-            if(isOpen === false) {
-                this.helpVisible = false;
-            } else {
-                this.toggleCheatSheet();
-            }
+            this.helpVisible = isOpen;
         });
     }
 
@@ -152,8 +147,8 @@ export class CheatSheetComponent implements OnInit, OnDestroy {
             this.subscription.unsubscribe();
         }
     }
-
-    public toggleCheatSheet(): void {
-        this.helpVisible = !this.helpVisible;
+    
+    public toggleCheatSheet() {
+      this.hotkeysService.toggleCheatSheet();
     }
 }
