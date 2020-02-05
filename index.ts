@@ -17,7 +17,7 @@ export * from './src/hotkeys.service';
     declarations : [HotkeysDirective, CheatSheetComponent]
 })
 export class HotkeyModule {
-    static forRoot(options: IHotkeyOptions = {}): ModuleWithProviders {
+    static forRoot(options: IHotkeyOptions = {}): ModuleWithProviders<HotkeyModule> {
         return {
             ngModule : HotkeyModule,
             providers : [
