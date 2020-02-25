@@ -8,7 +8,7 @@ import { HotkeysService } from './hotkeys.service';
 @NgModule({
     declarations: [HotkeysDirective, HotkeysCheatsheetComponent],
     imports: [CommonModule],
-    exports: []
+    exports: [HotkeysDirective, HotkeysCheatsheetComponent]
 })
 export class HotkeyModule {
     static forRoot(options: IHotkeyOptions = {}): ModuleWithProviders<HotkeyModule> {
