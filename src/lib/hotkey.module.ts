@@ -11,6 +11,7 @@ import { HotkeysService } from './hotkeys.service';
     exports: [HotkeysDirective, HotkeysCheatsheetComponent]
 })
 export class HotkeyModule {
+    // noinspection JSUnusedGlobalSymbols
     static forRoot(options: IHotkeyOptions = {}): ModuleWithProviders<HotkeyModule> {
         return {
             ngModule : HotkeyModule,

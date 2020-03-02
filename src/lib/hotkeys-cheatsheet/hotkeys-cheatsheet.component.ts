@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
 })
 export class HotkeysCheatsheetComponent implements OnInit, OnDestroy {
     helpVisible = false;
-    @Input() title: string = 'Keyboard Shortcuts:';
+    @Input() title = 'Keyboard Shortcuts:';
     subscription: Subscription;
 
     hotkeys: Hotkey[];
