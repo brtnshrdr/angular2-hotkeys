@@ -1,5 +1,5 @@
 # angular2-hotkeys
-Angular 5, 6, 7 and 8 Compatible. Older versions might work but isn't officially tested.
+Angular 9 and Ivy Compatible. Older versions might work but isn't officially tested.
 ## Installation
 
 To install this library, run:
@@ -78,7 +78,7 @@ The third parameter, given as `undefined`, can be used to allow the Hotkey to fi
 
 ### Cheat Sheet Customization
 
-1. You can now pass in custom options in `HotkeysModule.forRoot(options: IHotkeyOptions)`.
+1. You can now pass in custom options in `HotkeyModule.forRoot(options: IHotkeyOptions)`.
 
 ```typescript
 export interface IHotkeyOptions {
