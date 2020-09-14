@@ -134,7 +134,7 @@ export class HotkeysService {
         }
         if (Array.isArray(hotkey)) {
             const temp: Hotkey[] = [];
-            for (const key of hotkey) {
+            for (const key of hotkey.slice()) {
                 temp.push(this.pause(key) as Hotkey);
             }
             return temp;
@@ -151,7 +151,7 @@ export class HotkeysService {
         }
         if (Array.isArray(hotkey)) {
             const temp: Hotkey[] = [];
-            for (const key of hotkey) {
+            for (const key of hotkey.slice()) {
                 temp.push(this.unpause(key) as Hotkey);
             }
             return temp;
