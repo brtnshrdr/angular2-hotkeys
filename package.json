@@ -37,7 +37,7 @@
     },
     "dependencies": {
         "mousetrap": "^1.6.0",
-        "@types/mousetrap": "^1.6.0"
+        "@types/mousetrap": "^1.6.4"
     },
     "devDependencies": {
         "@angular-devkit/build-angular": "~0.900.3",
