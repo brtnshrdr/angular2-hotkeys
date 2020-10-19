@@ -36,8 +36,8 @@
         "rxjs": "^5.5.0 || ^6.0.0"
     },
     "dependencies": {
-        "mousetrap": "^1.6.0",
-        "@types/mousetrap": "^1.6.0"
+        "mousetrap": "^1.6.3",
+        "@types/mousetrap": "^1.6.3"
     },
     "devDependencies": {
         "@angular-devkit/build-angular": "~0.900.3",
