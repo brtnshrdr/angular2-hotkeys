@@ -1,7 +1,8 @@
 import { Directive, ElementRef, Input, OnDestroy, OnInit } from '@angular/core';
 import { ExtendedKeyboardEvent, Hotkey } from './hotkey.model';
 import { HotkeysService } from './hotkeys.service';
-import 'mousetrap';
+import { MousetrapInstance} from 'mousetrap';
+import * as Mousetrap from 'mousetrap';
 
 @Directive({
     selector: '[hotkeys]',
