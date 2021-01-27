@@ -2,7 +2,7 @@ import { Inject, Injectable } from '@angular/core';
 import { Hotkey } from './hotkey.model';
 import { Subject } from 'rxjs';
 import { HotkeyOptions, IHotkeyOptions } from './hotkey.options';
-import 'mousetrap';
+import * as Mousetrap from 'mousetrap';
 
 @Injectable({
     providedIn: 'root'
@@ -10,7 +10,7 @@ import 'mousetrap';
 export class HotkeysService {
     hotkeys: Hotkey[] = [];
     pausedHotkeys: Hotkey[] = [];
-    mousetrap: MousetrapInstance;
+    mousetrap: Mousetrap.MousetrapInstance;
     cheatSheetToggle: Subject<any> = new Subject();
 
     private preventIn = ['INPUT', 'SELECT', 'TEXTAREA'];

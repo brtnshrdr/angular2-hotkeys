@@ -1,7 +1,7 @@
 import { Directive, ElementRef, Input, OnDestroy, OnInit } from '@angular/core';
 import { ExtendedKeyboardEvent, Hotkey } from './hotkey.model';
 import { HotkeysService } from './hotkeys.service';
-import 'mousetrap';
+import * as Mousetrap from 'mousetrap';
 
 @Directive({
     selector: '[hotkeys]',
@@ -10,7 +10,7 @@ import 'mousetrap';
 export class HotkeysDirective implements OnInit, OnDestroy {
     @Input() hotkeys: { [combo: string]: (event: KeyboardEvent, combo: string) => ExtendedKeyboardEvent }[];
 
-    private mousetrap: MousetrapInstance;
+    private mousetrap: Mousetrap.MousetrapInstance;
     private hotkeysList: Hotkey[] = [];
     private oldHotkeys: Hotkey[] = [];
 
