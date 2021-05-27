@@ -6,14 +6,14 @@
     "version": 1,
     "newProjectRoot": "./",
     "projects": {
-        "@conflito/angular2-hotkeys": {
+        "@conflito2/angular2-hotkeys": {
             "projectType": "library",
             "root": "./",
             "sourceRoot": "src",
             "prefix": "lib",
             "architect": {
                 "build": {
-                    "builder": "@angular-devkit/build-ng-packagr:build",
+                    "builder": "@angular-devkit/build-angular:ng-packagr",
                     "options": {
                         "tsConfig": "tsconfig.lib.json",
                         "project": "ng-package.json"
@@ -47,5 +47,5 @@
             }
         }
     },
-    "defaultProject": "@conflito/angular2-hotkeys"
+    "defaultProject": "@conflito2/angular2-hotkeys"
 }

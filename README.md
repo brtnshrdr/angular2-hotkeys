@@ -9,7 +9,7 @@ Forked from https://github.com/brtnshrdr/angular2-hotkeys that seems to have bee
 To install this library, run:
 
 ```bash
-$ npm install angular2-hotkeys --save
+$ npm install @conflito2/angular2-hotkeys --save
 ```
 
 ## Examples
