@@ -1,9 +1,12 @@
 {
     "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+    "cli": {
+      "analytics": false
+    },
     "version": 1,
     "newProjectRoot": "./",
     "projects": {
-        "angular2-hotkeys": {
+        "@conflito/angular2-hotkeys": {
             "projectType": "library",
             "root": "./",
             "sourceRoot": "src",
@@ -44,5 +47,5 @@
             }
         }
     },
-    "defaultProject": "angular2-hotkeys"
+    "defaultProject": "@conflito/angular2-hotkeys"
 }

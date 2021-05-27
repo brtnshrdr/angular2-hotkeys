@@ -2,9 +2,9 @@
     "name": "@conflito/angular2-hotkeys",
     "version": "2.2.1",
     "scripts": {
-        "build": "ng build angular2-hotkeys",
-        "build:release": "ng build angular2-hotkeys --prod",
-        "build:watch": "ng build angular2-hotkeys --watch",
+        "build": "ng build @conflito/angular2-hotkeys",
+        "build:release": "ng build @conflito/angular2-hotkeys --prod",
+        "build:watch": "ng build @conflito/angular2-hotkeys --watch",
         "ng": "ng",
         "lint": "ng lint",
         "release": "npm run build:release && npm publish dist/",
