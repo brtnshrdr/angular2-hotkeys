@@ -6,7 +6,7 @@
     "version": 1,
     "newProjectRoot": "./",
     "projects": {
-        "@conflito2/angular2-hotkeys": {
+        "angular2-hotkeys": {
             "projectType": "library",
             "root": "./",
             "sourceRoot": "src",
@@ -47,5 +47,5 @@
             }
         }
     },
-    "defaultProject": "@conflito2/angular2-hotkeys"
+    "defaultProject": "angular2-hotkeys"
 }
