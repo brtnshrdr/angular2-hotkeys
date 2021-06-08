@@ -1,5 +1,7 @@
 # angular2-hotkeys
-Angular 9 and Ivy Compatible. Older versions might work but isn't officially tested.
+Angular 11 and Ivy Compatible. Older versions might work but isn't officially tested.
+
+
 ## Installation
 
 To install this library, run:

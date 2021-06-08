@@ -2,7 +2,8 @@ import { Inject, Injectable } from '@angular/core';
 import { Hotkey } from './hotkey.model';
 import { Subject } from 'rxjs';
 import { HotkeyOptions, IHotkeyOptions } from './hotkey.options';
-import 'mousetrap';
+import { MousetrapInstance } from 'mousetrap';
+import * as Mousetrap from "mousetrap";
 
 @Injectable({
     providedIn: 'root'
