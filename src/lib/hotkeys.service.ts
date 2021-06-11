@@ -86,11 +86,11 @@ export class HotkeysService {
         return hotkey;
     }
 
-    remove(hotkey?: Hotkey | Hotkey[]): Hotkey | Hotkey[] {
+    remove(hotkey?: Hotkey | Hotkey[], specificEvent?: string): Hotkey | Hotkey[] {
         const temp: Hotkey[] = [];
         if (!hotkey) {
             for (const key of this.hotkeys) {
-                temp.push(this.remove(key) as Hotkey);
+                temp.push(this.remove(key, specificEvent) as Hotkey);
             }
             return temp;
         }
@@ -103,7 +103,7 @@ export class HotkeysService {
         const index = this.findHotkey(hotkey as Hotkey);
         if (index > -1) {
             this.hotkeys.splice(index, 1);
-            this.mousetrap.unbind((hotkey as Hotkey).combo);
+            this.mousetrap.unbind((hotkey as Hotkey).combo, specificEvent);
             return hotkey;
         }
         return null;
