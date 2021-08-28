@@ -26,6 +26,10 @@ export class HotkeysService {
             return (element.contentEditable && element.contentEditable === 'true');
         };
         this.mousetrap = new (Mousetrap as any)();
+        this.initCheatSheet();
+    }
+
+    private initCheatSheet() {
         if (!this.options.disableCheatSheet) {
             this.add(new Hotkey(
                 this.options.cheatSheetHotkey || '?',
@@ -168,6 +172,9 @@ export class HotkeysService {
     // noinspection JSUnusedGlobalSymbols
     reset() {
         this.mousetrap.reset();
+        this.hotkeys = [];
+        this.pausedHotkeys = [];
+        this.initCheatSheet();
     }
 
     private findHotkey(hotkey: Hotkey): number {
