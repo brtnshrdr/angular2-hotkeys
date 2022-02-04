@@ -1,9 +1,9 @@
 {
   "name": "angular2-hotkeys",
-  "version": "2.3.2",
+  "version": "13.0.0",
   "scripts": {
     "build": "ng build angular2-hotkeys",
-    "build:release": "ng build angular2-hotkeys --prod",
+    "build:release": "ng build angular2-hotkeys --configuration production",
     "build:watch": "ng build angular2-hotkeys --watch",
     "ng": "ng",
     "lint": "ng lint",
