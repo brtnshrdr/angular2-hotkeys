@@ -31,9 +31,6 @@
   "bugs": {
     "url": "git@github.com:brtnshrdr/angular2-hotkeys.git/issues"
   },
-  "peerDependencies": {
-    "rxjs": "^5.5.0 || ^6.0.0"
-  },
   "dependencies": {
     "@types/mousetrap": "^1.6.9",
     "mousetrap": "^1.6.5",
