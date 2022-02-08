@@ -3,7 +3,7 @@ import { Hotkey } from './hotkey.model';
 import { Subject } from 'rxjs';
 import { HotkeyOptions, IHotkeyOptions } from './hotkey.options';
 import { MousetrapInstance } from 'mousetrap';
-import * as Mousetrap from "mousetrap";
+import * as Mousetrap from 'mousetrap';
 
 @Injectable({
     providedIn: 'root'
@@ -25,7 +25,7 @@ export class HotkeysService {
             }
             return (element.contentEditable && element.contentEditable === 'true');
         };
-        this.mousetrap = new (Mousetrap as any)();
+        this.mousetrap = new (Mousetrap as any).default();
         this.initCheatSheet();
     }
 
