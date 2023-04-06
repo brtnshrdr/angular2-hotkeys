@@ -34,6 +34,8 @@ export class Hotkey {
 
         return comboSplit.join(' + ');
     }
+    
+    public combo: string[];
 
     /**
      * Creates a new Hotkey for Mousetrap binding
@@ -45,7 +47,7 @@ export class Hotkey {
      * @param allowIn     an array of tag names to allow this combo in ('INPUT', 'SELECT', and/or 'TEXTAREA')
      * @param persistent  if true, the binding is preserved upon route changes
      */
-    constructor(public combo: string | string[], public callback: (event: KeyboardEvent, combo: string) => ExtendedKeyboardEvent | boolean,
+    constructor(combo: string | string[], public callback: (event: KeyboardEvent, combo: string) => ExtendedKeyboardEvent | boolean,
                 public allowIn?: string[], public description?: string | Function, public action?: string,
                 public persistent?: boolean) {
         this.combo = (Array.isArray(combo) ? combo : [combo as string]);
@@ -54,14 +56,6 @@ export class Hotkey {
     }
 
     get formatted(): string[] {
-        if (!this.formattedHotkey) {
-
-            const sequence: string[] = this.combo as Array<string>;
-            for (let i = 0; i < sequence.length; i++) {
-                sequence[i] = Hotkey.symbolize(sequence[i]);
-            }
-            this.formattedHotkey = sequence;
-        }
-        return this.formattedHotkey;
+      return (this.formattedHotkey ??= this.combo.map(Hotkey.symbolize));
     }
 }
