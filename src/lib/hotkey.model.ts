@@ -56,7 +56,7 @@ export class Hotkey {
     get formatted(): string[] {
         if (!this.formattedHotkey) {
 
-            const sequence: string[] = this.combo as Array<string>;
+            const sequence: string[] = [...this.combo] as Array<string>;
             for (let i = 0; i < sequence.length; i++) {
                 sequence[i] = Hotkey.symbolize(sequence[i]);
             }
