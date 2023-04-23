@@ -1,76 +1,72 @@
 {
-    "name": "angular2-hotkeys",
-    "version": "2.2.0",
-    "scripts": {
-        "build": "ng build angular2-hotkeys",
-        "build:release": "ng build angular2-hotkeys --prod",
-        "build:watch": "ng build angular2-hotkeys --watch",
-        "ng": "ng",
-        "lint": "ng lint",
-        "release": "npm run build:release && npm publish dist/",
-        "release:beta": "npm run build:release && npm publish dist/ --tag beta",
-        "start": "ng serve",
-        "test": "ng test"
-    },
-    "license": "MIT",
-    "repository": {
-        "type": "git",
-        "url": "git@github.com:brtnshrdr/angular2-hotkeys.git"
-    },
-    "author": {
-        "name": "Nick Richardson",
-        "email": "nick.richardson@mediapixeldesign.com"
-    },
-    "keywords": [
-        "angular",
-        "angular2",
-        "hotkeys",
-        "keyboard",
-        "shortcut"
-    ],
-    "bugs": {
-        "url": "git@github.com:brtnshrdr/angular2-hotkeys.git/issues"
-    },
-    "peerDependencies": {
-        "@angular/core": "^5.2.0 || ^6.0.0 || ^7.0.0 || ^8.0.0 || ^9.0.0",
-        "rxjs": "^5.5.0 || ^6.0.0"
-    },
-    "dependencies": {
-        "mousetrap": "^1.6.0",
-        "@types/mousetrap": "^1.6.0"
-    },
-    "devDependencies": {
-        "@angular-devkit/build-angular": "~0.900.3",
-        "@angular-devkit/build-ng-packagr": "~0.900.3",
-        "@angular/animations": "~9.0.2",
-        "@angular/cli": "~9.0.3",
-        "@angular/common": "~9.0.2",
-        "@angular/compiler": "~9.0.2",
-        "@angular/compiler-cli": "~9.0.2",
-        "@angular/core": "~9.0.2",
-        "@angular/forms": "~9.0.2",
-        "@angular/language-service": "~9.0.2",
-        "@angular/platform-browser": "~9.0.2",
-        "@angular/platform-browser-dynamic": "~9.0.2",
-        "@angular/router": "~9.0.2",
-        "@types/node": "^12.11.1",
-        "@types/jasmine": "~3.5.0",
-        "@types/jasminewd2": "~2.0.3",
-        "codelyzer": "^5.1.2",
-        "jasmine-core": "~3.5.0",
-        "jasmine-spec-reporter": "~4.2.1",
-        "karma": "~4.3.0",
-        "karma-chrome-launcher": "~3.1.0",
-        "karma-coverage-istanbul-reporter": "~2.1.0",
-        "karma-jasmine": "~2.0.1",
-        "karma-jasmine-html-reporter": "^1.4.2",
-        "ng-packagr": "^9.0.0",
-        "protractor": "~5.4.3",
-        "rxjs": "~6.5.4",
-        "ts-node": "~8.3.0",
-        "tslib": "^1.10.0",
-        "tslint": "~5.18.0",
-        "typescript": "~3.7.5",
-        "zone.js": "~0.10.2"
-    }
+  "name": "angular2-hotkeys",
+  "version": "13.3.0",
+  "scripts": {
+    "build": "ng build angular2-hotkeys",
+    "build:release": "ng build angular2-hotkeys --configuration production",
+    "build:watch": "ng build angular2-hotkeys --watch",
+    "ng": "ng",
+    "lint": "ng lint",
+    "release": "npm run build:release && npm publish dist/",
+    "release:beta": "npm run build:release && npm publish dist/ --tag beta",
+    "start": "ng serve",
+    "test": "ng test"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:brtnshrdr/angular2-hotkeys.git"
+  },
+  "author": {
+    "name": "Nick Richardson",
+    "email": "nick.richardson@mediapixeldesign.com"
+  },
+  "keywords": [
+    "angular",
+    "angular2",
+    "hotkeys",
+    "keyboard",
+    "shortcut"
+  ],
+  "bugs": {
+    "url": "git@github.com:brtnshrdr/angular2-hotkeys.git/issues"
+  },
+  "dependencies": {
+    "@types/mousetrap": "^1.6.9",
+    "mousetrap": "^1.6.5",
+    "tslib": "^2.3.1"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "~13.2.2",
+    "@angular-devkit/core": "^13.2.2",
+    "@angular/animations": "~13.2.1",
+    "@angular/cli": "~13.2.2",
+    "@angular/common": "~13.2.1",
+    "@angular/compiler": "~13.2.1",
+    "@angular/compiler-cli": "~13.2.1",
+    "@angular/core": "~13.2.1",
+    "@angular/forms": "~13.2.1",
+    "@angular/language-service": "~13.2.1",
+    "@angular/platform-browser": "~13.2.1",
+    "@angular/platform-browser-dynamic": "~13.2.1",
+    "@angular/router": "~13.2.1",
+    "@types/jasmine": "~3.10.3",
+    "@types/jasminewd2": "~2.0.10",
+    "@types/node": "^17.0.14",
+    "codelyzer": "^6.0.2",
+    "jasmine-core": "~4.0.0",
+    "jasmine-spec-reporter": "~7.0.0",
+    "karma": "~6.3.13",
+    "karma-chrome-launcher": "~3.1.0",
+    "karma-coverage-istanbul-reporter": "~3.0.3",
+    "karma-jasmine": "~4.0.1",
+    "karma-jasmine-html-reporter": "^1.7.0",
+    "ng-packagr": "^13.2.1",
+    "protractor": "~7.0.0",
+    "rxjs": "~7.5.2",
+    "ts-node": "~10.4.0",
+    "tslint": "~6.1.0",
+    "typescript": "~4.5.5",
+    "zone.js": "~0.11.4"
+  }
 }

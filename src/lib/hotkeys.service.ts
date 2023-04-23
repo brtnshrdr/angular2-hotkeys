@@ -2,7 +2,8 @@ import { Inject, Injectable } from '@angular/core';
 import { Hotkey } from './hotkey.model';
 import { Subject } from 'rxjs';
 import { HotkeyOptions, IHotkeyOptions } from './hotkey.options';
-import 'mousetrap';
+import { MousetrapInstance } from 'mousetrap';
+import * as Mousetrap from 'mousetrap';
 
 @Injectable({
     providedIn: 'root'
@@ -24,7 +25,11 @@ export class HotkeysService {
             }
             return (element.contentEditable && element.contentEditable === 'true');
         };
-        this.mousetrap = new (Mousetrap as any)();
+        this.mousetrap = new (Mousetrap as any).default();
+        this.initCheatSheet();
+    }
+
+    private initCheatSheet() {
         if (!this.options.disableCheatSheet) {
             this.add(new Hotkey(
                 this.options.cheatSheetHotkey || '?',
@@ -85,11 +90,11 @@ export class HotkeysService {
         return hotkey;
     }
 
-    remove(hotkey?: Hotkey | Hotkey[]): Hotkey | Hotkey[] {
+    remove(hotkey?: Hotkey | Hotkey[], specificEvent?: string): Hotkey | Hotkey[] {
         const temp: Hotkey[] = [];
         if (!hotkey) {
             for (const key of this.hotkeys) {
-                temp.push(this.remove(key) as Hotkey);
+                temp.push(this.remove(key, specificEvent) as Hotkey);
             }
             return temp;
         }
@@ -102,7 +107,7 @@ export class HotkeysService {
         const index = this.findHotkey(hotkey as Hotkey);
         if (index > -1) {
             this.hotkeys.splice(index, 1);
-            this.mousetrap.unbind((hotkey as Hotkey).combo);
+            this.mousetrap.unbind((hotkey as Hotkey).combo, specificEvent);
             return hotkey;
         }
         return null;
@@ -167,6 +172,9 @@ export class HotkeysService {
     // noinspection JSUnusedGlobalSymbols
     reset() {
         this.mousetrap.reset();
+        this.hotkeys = [];
+        this.pausedHotkeys = [];
+        this.initCheatSheet();
     }
 
     private findHotkey(hotkey: Hotkey): number {
