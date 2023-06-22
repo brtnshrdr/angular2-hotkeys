@@ -1,7 +1,7 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Hotkey } from '../hotkey.model';
 import { HotkeysService } from '../hotkeys.service';
-import { Subscription } from 'rxjs';
+import {BehaviorSubject, Subscription} from 'rxjs';
 
 @Component({
     selector: 'hotkeys-cheatsheet',
@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
     styleUrls: ['./hotkeys-cheatsheet.component.css']
 })
 export class HotkeysCheatsheetComponent implements OnInit, OnDestroy {
-    helpVisible = false;
+    helpVisible$ = new BehaviorSubject(false);
     @Input() title = 'Keyboard Shortcuts:';
     subscription: Subscription;
 
@@ -25,7 +25,7 @@ export class HotkeysCheatsheetComponent implements OnInit, OnDestroy {
             }
 
             if (isOpen === false) {
-                this.helpVisible = false;
+                this.helpVisible$.next(false);
             } else {
                 this.toggleCheatSheet();
             }
@@ -39,6 +39,6 @@ export class HotkeysCheatsheetComponent implements OnInit, OnDestroy {
     }
 
     public toggleCheatSheet(): void {
-        this.helpVisible = !this.helpVisible;
+        this.helpVisible$.next(!this.helpVisible$.value);
     }
 }

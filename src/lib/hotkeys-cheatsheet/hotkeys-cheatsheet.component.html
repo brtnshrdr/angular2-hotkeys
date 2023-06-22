@@ -1,4 +1,4 @@
-<div class="cfp-hotkeys-container fade" [ngClass]="{'in': helpVisible}" style="display:none">
+<div class="cfp-hotkeys-container fade" [ngClass]="{'in': helpVisible$|async}" style="display:none">
     <div class="cfp-hotkeys">
         <h4 class="cfp-hotkeys-title">{{ title }}</h4>
         <table>
