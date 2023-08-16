@@ -1,5 +1,5 @@
 # angular2-hotkeys
-Angular 13 and Ivy Compatible. Older versions might work but isn't officially tested.
+Angular 16 and Ivy Compatible. Older versions might work but isn't officially tested.
 
 ## Versions compatibility
 v2.4.0 - Angular 11 (most likely lower Angular versions)
@@ -7,6 +7,8 @@ v2.4.0 - Angular 11 (most likely lower Angular versions)
 v13.*.* - Angular 13 (most likely Angular 12)
 
 v15.*.* - Angular 15
+
+v16.*.* - Angular 16
 
 ## Installation
 
