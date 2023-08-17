@@ -1,6 +1,6 @@
 {
   "name": "angular2-hotkeys",
-  "version": "15.0.0",
+  "version": "16.0.0",
   "scripts": {
     "build": "ng build angular2-hotkeys",
     "build:release": "ng build angular2-hotkeys --configuration production",
