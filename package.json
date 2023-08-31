@@ -33,6 +33,7 @@
   },
   "dependencies": {
     "mousetrap": "^1.6.5",
+    "@types/mousetrap": "^1.6.9",
     "tslib": "^2.3.1"
   },
   "devDependencies": {
@@ -52,7 +53,6 @@
     "@types/jasmine": "~3.10.3",
     "@types/jasminewd2": "~2.0.10",
     "@types/node": "^18.11.9 ",
-    "@types/mousetrap": "^1.6.9",
     "codelyzer": "^6.0.2",
     "jasmine-core": "~4.0.0",
     "jasmine-spec-reporter": "~7.0.0",
