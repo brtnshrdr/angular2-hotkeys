@@ -1,6 +1,5 @@
-export interface ExtendedKeyboardEvent extends KeyboardEvent {
-    returnValue: boolean; // IE returnValue
-}
+import { ExtendedKeyboardEvent } from "./hotkey.interfaces-types";
+
 
 export class Hotkey {
     private formattedHotkey: string[] = [];
