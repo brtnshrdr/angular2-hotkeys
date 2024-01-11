@@ -3,7 +3,7 @@ export interface ExtendedKeyboardEvent extends KeyboardEvent {
 }
 
 export class Hotkey {
-    private formattedHotkey: string[];
+    private formattedHotkey: string[] = [];
 
     static symbolize(combo: string): string {
         const map: any = {
@@ -46,8 +46,8 @@ export class Hotkey {
      * @param persistent  if true, the binding is preserved upon route changes
      */
     constructor(public combo: string | string[], public callback: (event: KeyboardEvent, combo: string) => ExtendedKeyboardEvent | boolean,
-                public allowIn?: string[], public description?: string | Function, public action?: string,
-                public persistent?: boolean) {
+        public allowIn?: string[], public description?: string | Function, public action?: string,
+        public persistent?: boolean) {
         this.combo = (Array.isArray(combo) ? combo : [combo as string]);
         this.allowIn = allowIn || [];
         this.description = description || '';
