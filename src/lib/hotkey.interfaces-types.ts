@@ -1,5 +1,7 @@
 import { InjectionToken } from '@angular/core';
 
+export const HotkeyOptions = new InjectionToken<IHotkeyOptions>('HotkeyOptions');
+
 export interface IHotkeyOptions {
     /**
      * Disable the cheat sheet popover dialog? Default: false
@@ -24,4 +26,8 @@ export interface IHotkeyOptions {
     cheatSheetDescription?: string;
 }
 
-export const HotkeyOptions = new InjectionToken<IHotkeyOptions>('HotkeyOptions');
+export interface ExtendedKeyboardEvent extends KeyboardEvent {
+    returnValue: boolean; // IE returnValue
+}
+
+export type HotkeyMap = { [combo: string]: (event: KeyboardEvent, combo: string) => ExtendedKeyboardEvent }[];
