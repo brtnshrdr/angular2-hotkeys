@@ -9,7 +9,8 @@ type HotkeyMap = { [combo: string]: (event: KeyboardEvent, combo: string) => Ext
 
 @Directive({
     selector: '[hotkeys]',
-    providers: [HotkeysService]
+    providers: [HotkeysService],
+    standalone: true
 })
 export class HotkeysDirective implements OnInit, OnDestroy {
     @Input()

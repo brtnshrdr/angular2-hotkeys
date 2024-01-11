@@ -2,11 +2,14 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Hotkey } from '../hotkey.model';
 import { HotkeysService } from '../hotkeys.service';
 import { BehaviorSubject, Subscription } from 'rxjs';
+import { NgClass, NgFor, AsyncPipe } from '@angular/common';
 
 @Component({
     selector: 'hotkeys-cheatsheet',
     templateUrl: './hotkeys-cheatsheet.component.html',
-    styleUrls: ['./hotkeys-cheatsheet.component.css']
+    styleUrls: ['./hotkeys-cheatsheet.component.css'],
+    standalone: true,
+    imports: [NgClass, NgFor, AsyncPipe]
 })
 export class HotkeysCheatsheetComponent implements OnInit, OnDestroy {
     helpVisible$ = new BehaviorSubject(false);

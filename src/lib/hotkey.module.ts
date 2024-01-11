@@ -6,8 +6,7 @@ import { HotkeyOptions, IHotkeyOptions } from './hotkey.interfaces-types';
 import { HotkeysService } from './hotkeys.service';
 
 @NgModule({
-    declarations: [HotkeysDirective, HotkeysCheatsheetComponent],
-    imports: [CommonModule],
+    imports: [CommonModule, HotkeysDirective, HotkeysCheatsheetComponent],
     exports: [HotkeysDirective, HotkeysCheatsheetComponent]
 })
 export class HotkeyModule {
