@@ -30,37 +30,44 @@ export class HotkeysService {
     }
 
     private initCheatSheet() {
+        // Cheat sheet hotkey
         if (!this.options.disableCheatSheet) {
-            this.add(new Hotkey(
-                this.options.cheatSheetHotkey || '?',
-                function(_: KeyboardEvent) {
-                    this.cheatSheetToggle.next();
-                }.bind(this),
-                [],
-                this.options.cheatSheetDescription || 'Show / hide this help menu',
-            ));
+            let opt = {
+                combo: this.options.cheatSheetHotkey || '?',
+                callback: (_event: KeyboardEvent, _combo: string) => {
+                    this.cheatSheetToggle.next(null);
+                    return false;
+                },
+                description: this.options.cheatSheetDescription || 'Show / hide this help menu',
+                allowIn: []
+            };
+            let add: Hotkey | Hotkey[] = new Hotkey(opt.combo, opt.callback.bind(this), opt.allowIn, opt.description);
+            this.add(add);
         }
-
+        // Cheat sheet close esc
         if (this.options.cheatSheetCloseEsc) {
-            this.add(new Hotkey(
-                'esc',
-                function(_: KeyboardEvent) {
+            let opt = {
+                combo: 'esc',
+                callback: (_event: KeyboardEvent, _combo: string) => {
                     this.cheatSheetToggle.next(false);
-                }.bind(this),
-                ['HOTKEYS-CHEATSHEET'],
-                this.options.cheatSheetCloseEscDescription || 'Hide this help menu',
-            ));
+                    return false;
+                },
+                description: this.options.cheatSheetCloseEscDescription || 'Hide this help menu',
+                allowIn: ['HOTKEYS-CHEATSHEET']
+            };
+            let add: Hotkey | Hotkey[] = new Hotkey(opt.combo, opt.callback.bind(this), opt.allowIn, opt.description);
+            this.add(add);
         }
 
     }
 
-    add(hotkey: Hotkey | Hotkey[], specificEvent?: string): Hotkey | Hotkey[] {
+    add<T extends Hotkey | Hotkey[]>(hotkey: T, specificEvent?: string): T {
         if (Array.isArray(hotkey)) {
             const temp: Hotkey[] = [];
             for (const key of hotkey) {
-                temp.push(this.add(key, specificEvent) as Hotkey);
+                temp.push(this.add<Hotkey>(key, specificEvent));
             }
-            return temp;
+            return temp as T;
         }
         this.remove(hotkey);
         this.hotkeys.push(hotkey as Hotkey);
@@ -73,11 +80,12 @@ export class HotkeysService {
                 const target: HTMLElement = (event.target || event.srcElement) as HTMLElement; // srcElement is IE only
                 const nodeName: string = target.nodeName.toUpperCase();
 
+                const allowIn = (hotkey as Hotkey).allowIn || [];
+
                 // check if the input has a mousetrap class, and skip checking preventIn if so
                 if ((' ' + target.className + ' ').indexOf(' mousetrap ') > -1) {
                     shouldExecute = true;
-                } else if (this.preventIn.indexOf(nodeName) > -1 &&
-                    (hotkey as Hotkey).allowIn.map(allow => allow.toUpperCase()).indexOf(nodeName) === -1) {
+                } else if (this.preventIn.indexOf(nodeName) > -1 && allowIn.map(allow => allow.toUpperCase()).indexOf(nodeName) === -1) {
                     // don't execute callback if the event was fired from inside an element listed in preventIn but not in allowIn
                     shouldExecute = false;
                 }
@@ -90,19 +98,19 @@ export class HotkeysService {
         return hotkey;
     }
 
-    remove(hotkey?: Hotkey | Hotkey[], specificEvent?: string): Hotkey | Hotkey[] {
+    remove<T extends Hotkey | Hotkey[]>(hotkey?: T, specificEvent?: string): T | null {
         const temp: Hotkey[] = [];
         if (!hotkey) {
             for (const key of this.hotkeys) {
                 temp.push(this.remove(key, specificEvent) as Hotkey);
             }
-            return temp;
+            return temp as T;
         }
         if (Array.isArray(hotkey)) {
             for (const key of hotkey) {
                 temp.push(this.remove(key) as Hotkey);
             }
-            return temp;
+            return temp as T;
         }
         const index = this.findHotkey(hotkey as Hotkey);
         if (index > -1) {
@@ -113,7 +121,7 @@ export class HotkeysService {
         return null;
     }
 
-    get(combo?: string | string[]): Hotkey | Hotkey[] {
+    get<T extends string | string[]>(combo?: T): Hotkey | Hotkey[] | null {
         if (!combo) {
             return this.hotkeys;
         }
@@ -150,21 +158,21 @@ export class HotkeysService {
     }
 
     // noinspection JSUnusedGlobalSymbols
-    unpause(hotkey?: Hotkey | Hotkey[]): Hotkey | Hotkey[] {
+    unpause<T extends Hotkey | Hotkey[]>(hotkey?: T): T | null {
         if (!hotkey) {
-            return this.unpause(this.pausedHotkeys);
+            return this.unpause(this.pausedHotkeys) as T;
         }
         if (Array.isArray(hotkey)) {
             const temp: Hotkey[] = [];
             for (const key of hotkey.slice()) {
                 temp.push(this.unpause(key) as Hotkey);
             }
-            return temp;
+            return temp as T;
         }
         const index: number = this.pausedHotkeys.indexOf(hotkey as Hotkey);
         if (index > -1) {
             this.add(hotkey);
-            return this.pausedHotkeys.splice(index, 1);
+            return this.pausedHotkeys.splice(index, 1) as T;
         }
         return null;
     }
@@ -181,4 +189,3 @@ export class HotkeysService {
         return this.hotkeys.indexOf(hotkey);
     }
 }
-
