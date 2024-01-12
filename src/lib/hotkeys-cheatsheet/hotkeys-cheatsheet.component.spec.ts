@@ -7,8 +7,8 @@ describe('HotkeysCheatsheetComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [HotkeysCheatsheetComponent]
-        })
+    imports: [HotkeysCheatsheetComponent]
+})
             .compileComponents();
     }));
 
