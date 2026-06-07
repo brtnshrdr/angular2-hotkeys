@@ -25,7 +25,7 @@ export class HotkeysService {
             }
             return (element.contentEditable && element.contentEditable === 'true');
         };
-        this.mousetrap = new (Mousetrap as any).default();
+        this.mousetrap = new (Mousetrap)(document.documentElement);
         this.initCheatSheet();
     }
 
