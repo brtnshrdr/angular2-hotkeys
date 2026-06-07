@@ -1,15 +1,20 @@
 import { Directive, ElementRef, Input, OnDestroy, OnInit } from '@angular/core';
-import { ExtendedKeyboardEvent, Hotkey } from './hotkey.model';
+import { Hotkey } from './hotkey.model';
 import { HotkeysService } from './hotkeys.service';
 import { MousetrapInstance } from 'mousetrap';
 import * as Mousetrap from 'mousetrap';
+import { ExtendedKeyboardEvent } from './hotkey.interfaces-types';
+
+type HotkeyMap = { [combo: string]: (event: KeyboardEvent, combo: string) => ExtendedKeyboardEvent }[];
 
 @Directive({
     selector: '[hotkeys]',
-    providers: [HotkeysService]
+    providers: [HotkeysService],
+    standalone: true
 })
 export class HotkeysDirective implements OnInit, OnDestroy {
-    @Input() hotkeys: { [combo: string]: (event: KeyboardEvent, combo: string) => ExtendedKeyboardEvent }[];
+    @Input()
+    hotkeys: HotkeyMap = [];
 
     private mousetrap: MousetrapInstance;
     private hotkeysList: Hotkey[] = [];
